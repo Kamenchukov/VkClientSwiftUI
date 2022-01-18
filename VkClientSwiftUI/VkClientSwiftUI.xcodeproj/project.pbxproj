@@ -11,6 +11,8 @@
 		E12C40A827919BDB004BB08B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C40A727919BDB004BB08B /* ContentView.swift */; };
 		E12C40AA27919BE3004BB08B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E12C40A927919BE3004BB08B /* Assets.xcassets */; };
 		E12C40AD27919BE3004BB08B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E12C40AC27919BE3004BB08B /* Preview Assets.xcassets */; };
+		E12C40B42796F70B004BB08B /* SurNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C40B32796F70B004BB08B /* SurNameCell.swift */; };
+		E12C40B6279700FF004BB08B /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12C40B5279700FF004BB08B /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		E12C40A727919BDB004BB08B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E12C40A927919BE3004BB08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E12C40AC27919BE3004BB08B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E12C40B32796F70B004BB08B /* SurNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurNameCell.swift; sourceTree = "<group>"; };
+		E12C40B5279700FF004BB08B /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				E12C40A727919BDB004BB08B /* ContentView.swift */,
 				E12C40A927919BE3004BB08B /* Assets.xcassets */,
 				E12C40AB27919BE3004BB08B /* Preview Content */,
+				E12C40B32796F70B004BB08B /* SurNameCell.swift */,
+				E12C40B5279700FF004BB08B /* GroupCell.swift */,
 			);
 			path = VkClientSwiftUI;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12C40A827919BDB004BB08B /* ContentView.swift in Sources */,
+				E12C40B42796F70B004BB08B /* SurNameCell.swift in Sources */,
 				E12C40A627919BDB004BB08B /* VkClientSwiftUIApp.swift in Sources */,
+				E12C40B6279700FF004BB08B /* GroupCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
