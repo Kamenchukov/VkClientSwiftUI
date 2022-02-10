@@ -9,12 +9,27 @@ import SwiftUI
 
 struct TabBarView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            FriendsView().tabItem {
+                Image(systemName: "h.circle")
+                Text("Friends")
+            }
+            GroupsView().tabItem {
+                Image(systemName: "folder")
+                Text("Groups")
+            }
+            NewsView().tabItem {
+                Image(systemName: "square.and.pencil")
+                Text("News")
+            }
+        }
+            
+        }
     }
-}
 
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-    }
-}
+
+//struct TabBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabBarView()
+//    }
+//}

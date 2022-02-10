@@ -7,10 +7,17 @@
 
 import SwiftUI
 import Combine
+
+
+
 struct ContentView: View {
     @State private var login = ""
     @State private var password = ""
     @State private var shouldShowLogo: Bool = true
+    @State private var showIncorrentCredentialWarning = false
+    @Binding var shouldShowMainView: Bool 
+    
+    @State private var isUserLoggedIn: Bool = false
     
     private let keyboardIsOnPublisher = Publishers.Merge(NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
         .map { _ in true },
@@ -18,10 +25,21 @@ struct ContentView: View {
         .map { _ in false })
         .removeDuplicates()
     
+    private func verifyLogData() {
+        if login == "Admin" && password == "Admin" {
+            isUserLoggedIn = true
+            shouldShowMainView = isUserLoggedIn
+            // authorizing user
+        } else {
+            showIncorrentCredentialWarning = true
+        }
+        password = ""
+    }
+    
     var body: some View {
         ZStack {
             GeometryReader { _ in
-                Image("sunny_weather")
+                Image("")
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
             }
@@ -49,7 +67,7 @@ struct ContentView: View {
                         }
                     }.frame(maxWidth: 250)
                         .padding(.top, 50)
-                    Button(action: { print("Hello") }) {
+                    Button(action: verifyLogData) {
                         Text("Log in")
                     }.padding(.top, 50)
                         .padding(.bottom, 20)
@@ -64,7 +82,10 @@ struct ContentView: View {
             }
         }.onTapGesture {
             UIApplication.shared.endEditing()
-        }
+        }.alert(isPresented: $showIncorrentCredentialWarning, content: {
+            Alert(
+            title: Text("Error"),
+            message: Text("Incorrect Login/Password was entered"))})
     }
 }
 extension UIApplication {

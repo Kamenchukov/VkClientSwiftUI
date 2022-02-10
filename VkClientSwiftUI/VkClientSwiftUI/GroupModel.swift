@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class GroupModel: Identifiable {
+    internal init(groupName: String, groupImage: String) {
+        self.groupName = groupName
+        self.groupImage = groupImage
+    }
+    
+    let groupName: String
+    let groupImage: String
+    
+}

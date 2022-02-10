@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct FriendFotoView: View {
+    let friendFoto: FriendsModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Spacer()
+        Image(friendFoto.imageFriend).navigationTitle("FriendFotoView")
+        Spacer()
     }
 }
 
-struct FriendFotoView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendFotoView()
-    }
-}
+//struct FriendFotoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FriendFotoView()
+//    }
+//}
