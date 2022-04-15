@@ -38,6 +38,10 @@
 		E166DE06280986E5009A763F /* RealmUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE05280986E5009A763F /* RealmUsers.swift */; };
 		E166DE0828098707009A763F /* RealmGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE0728098707009A763F /* RealmGroups.swift */; };
 		E166DE0A28098723009A763F /* RealmPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE0928098723009A763F /* RealmPhotos.swift */; };
+		E166DE0D2809A1EF009A763F /* CoordinatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE0C2809A1EF009A763F /* CoordinatorObject.swift */; };
+		E166DE102809A24F009A763F /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE0F2809A24F009A763F /* FriendsCell.swift */; };
+		E166DE122809A263009A763F /* PhotoFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE112809A263009A763F /* PhotoFriendsCell.swift */; };
+		E166DE142809A27B009A763F /* ExtendedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DE132809A27B009A763F /* ExtendedPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,10 @@
 		E166DE05280986E5009A763F /* RealmUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUsers.swift; sourceTree = "<group>"; };
 		E166DE0728098707009A763F /* RealmGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroups.swift; sourceTree = "<group>"; };
 		E166DE0928098723009A763F /* RealmPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPhotos.swift; sourceTree = "<group>"; };
+		E166DE0C2809A1EF009A763F /* CoordinatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorObject.swift; sourceTree = "<group>"; };
+		E166DE0F2809A24F009A763F /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		E166DE112809A263009A763F /* PhotoFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFriendsCell.swift; sourceTree = "<group>"; };
+		E166DE132809A27B009A763F /* ExtendedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 		E166DDBD28095822009A763F /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				E166DE0B2809A1CD009A763F /* TabView */,
 				E166DDC4280958B2009A763F /* Group */,
 				E166DDC3280958A4009A763F /* Users */,
 				E166DDC22809589B009A763F /* News */,
@@ -195,8 +204,10 @@
 		E166DDC3280958A4009A763F /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				E166DE0E2809A22D009A763F /* Cells */,
 				E166DDF528098400009A763F /* PhotoFriendsView.swift */,
 				E166DDF728098448009A763F /* FriendsView.swift */,
+				E166DE132809A27B009A763F /* ExtendedPhotoView.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -238,6 +249,23 @@
 				E166DE0928098723009A763F /* RealmPhotos.swift */,
 			);
 			path = RealmModels;
+			sourceTree = "<group>";
+		};
+		E166DE0B2809A1CD009A763F /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				E166DE0C2809A1EF009A763F /* CoordinatorObject.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		E166DE0E2809A22D009A763F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E166DE0F2809A24F009A763F /* FriendsCell.swift */,
+				E166DE112809A263009A763F /* PhotoFriendsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +354,13 @@
 				E166DDD828097C6F009A763F /* LoginFromWebView.swift in Sources */,
 				E166DDDA28097CAD009A763F /* VKlogin.swift in Sources */,
 				E166DDF0280981E0009A763F /* PhotosModel.swift in Sources */,
+				E166DE0D2809A1EF009A763F /* CoordinatorObject.swift in Sources */,
 				E166DE0828098707009A763F /* RealmGroups.swift in Sources */,
 				E166DDDC28097CF0009A763F /* LoginContentView.swift in Sources */,
 				E166DDE628097FA8009A763F /* TabBarViewVK.swift in Sources */,
 				E11237A127B5051C00742801 /* NewsView.swift in Sources */,
+				E166DE122809A263009A763F /* PhotoFriendsCell.swift in Sources */,
+				E166DE142809A27B009A763F /* ExtendedPhotoView.swift in Sources */,
 				E166DDF828098448009A763F /* FriendsView.swift in Sources */,
 				E166DDEE280980CB009A763F /* GroupModel.swift in Sources */,
 				E166DE00280985B7009A763F /* GroupViewModel.swift in Sources */,
@@ -339,6 +370,7 @@
 				E166DDFC28098539009A763F /* ViewModifier.swift in Sources */,
 				E166DDF628098400009A763F /* PhotoFriendsView.swift in Sources */,
 				E166DDFA28098512009A763F /* ViewBuilder.swift in Sources */,
+				E166DE102809A24F009A763F /* FriendsCell.swift in Sources */,
 				E12C40A627919BDB004BB08B /* VkClientSwiftUIApp.swift in Sources */,
 				E166DE0428098602009A763F /* PhotosViewModel.swift in Sources */,
 				E166DDF22809839D009A763F /* GroupsView.swift in Sources */,

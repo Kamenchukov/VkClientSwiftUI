@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarViewVK: View {
+    @State private var searchText = ""
     let friendsViewModel = UserViewModel()
     let photoViewModel = PhotosViewModel()
     let groupsViewModel = GroupViewModel()

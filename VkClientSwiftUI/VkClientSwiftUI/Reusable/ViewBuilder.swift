@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct AvatarImage: View {
-    var content: Image
+    var content: AsyncImage<Image>
     
-    init(@ViewBuilder content: () -> Image) {
+    init(@ViewBuilder content: () -> AsyncImage<Image>) {
         self.content = content()
     }
     
     var body: some View {
         content
-            .resizable()
             .scaledToFill()
             .frame(width: 100,
                    height: 100,

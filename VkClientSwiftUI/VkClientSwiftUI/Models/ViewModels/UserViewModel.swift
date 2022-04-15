@@ -14,6 +14,7 @@ class UserViewModel: ObservableObject, Identifiable {
     let networkService = NetworkService()
     let token = Auth.instance.token
     @Published var users: [UserObject] = []
+    @Published var usersDict: [String: [UserObject]] = [:]
     
     public func fetchUsers() {
         networkService.loadUsers(token: token) { [weak self] users in
@@ -21,4 +22,7 @@ class UserViewModel: ObservableObject, Identifiable {
             self.users = users
         }
     }
+    public func reloadView() {
+            objectWillChange.send()
+        }
 }
