@@ -1,0 +1,38 @@
+//
+//  FriendsCell.swift
+//  VkClientSwiftUI
+//
+//  Created by Константин Каменчуков on 15.04.2022.
+//
+
+import SwiftUI
+
+ struct FriendsCell: View {
+
+     @State var animationAmount = false
+     let index: Int
+     let searchResult: [UserObject]
+
+     var body: some View {
+         VStack {
+             HStack {
+                 AvatarImage {
+                     AsyncImage(url: URL(string: searchResult[index].avatar))
+
+                 }
+                 .onTapGesture {
+                     animationAmount = true
+                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                         animationAmount = false
+                     }
+                 }
+
+                 TextBuilder {
+                     Text("\(searchResult[index].firstName) \(searchResult[index].lastName)")
+                 }
+             }
+         }.scaleEffect(animationAmount ? 1.2 : 1)
+             .animation(.spring(response: 0.4, dampingFraction: 0.6))
+
+     }
+ }
