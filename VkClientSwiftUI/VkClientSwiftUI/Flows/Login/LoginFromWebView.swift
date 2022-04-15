@@ -5,4 +5,15 @@
 //  Created by Константин Каменчуков on 15.04.2022.
 //
 
-import Foundation
+import SwiftUI
+
+struct LoginFromWebView: View {
+    
+    @Binding var isLogin: Bool
+    
+    var body: some View {
+        VKLoginWebView {
+            isLogin = true
+        }
+    }
+}

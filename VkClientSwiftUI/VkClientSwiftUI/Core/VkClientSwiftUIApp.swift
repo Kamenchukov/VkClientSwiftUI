@@ -9,11 +9,16 @@ import SwiftUI
 
 @main
 struct VkClientSwiftUIApp: App {
+    
+    @State var isLogin: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            //FriendsView()
-            ContainerView()
+            if isLogin {
+                TabBarViewVK()
+            } else {
+                LoginFromWebView(isLogin: $isLogin)
+            }
         }
     }
 }
