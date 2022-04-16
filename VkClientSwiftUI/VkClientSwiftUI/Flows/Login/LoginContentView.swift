@@ -5,92 +5,121 @@
 //  Created by Константин Каменчуков on 15.04.2022.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
-
-
-struct ContentView: View {
+struct LoginContentView: View {
+    
     @State private var login = ""
     @State private var password = ""
+    @State private var showAlert = false
     @State private var shouldShowLogo: Bool = true
-    @State private var showIncorrentCredentialWarning = false
-    @Binding var shouldShowMainView: Bool
+    @Binding var isLogin: Bool
     
-    @State private var isUserLoggedIn: Bool = false
-    
-    private let keyboardIsOnPublisher = Publishers.Merge(NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
-        .map { _ in true },
+    private let keyboardIsOnPublisher = Publishers.Merge(
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
+            .map { _ in true },
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
-        .map { _ in false })
+            .map { _ in false}
+    )
         .removeDuplicates()
     
-    private func verifyLogData() {
-        if login == "Admin" && password == "Admin" {
-            isUserLoggedIn = true
-            shouldShowMainView = isUserLoggedIn
-            // authorizing user
-        } else {
-            showIncorrentCredentialWarning = true
-        }
-        password = ""
-    }
-    
     var body: some View {
-        ZStack {
-            GeometryReader { _ in
-                Image("")
+        
+        ZStack() {
+            GeometryReader { geometry in
+                Image("wallpaper2")
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
+                    .aspectRatio( contentMode: .fill)
+                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
             }
-            ScrollView( showsIndicators: false) {
-                VStack {
+            
+            ScrollView {
+                VStack(alignment: .center) {
                     if shouldShowLogo {
-                        Text("VkClient ")
+                        Text("VK APP")
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.black)
+                            .padding(.vertical, 30)
+                            .padding(.top, 20)
                             .font(.largeTitle)
-                            .padding(.top, 32)
+                            .shadow(color: .black,
+                                    radius: 4,
+                                    x: -18.0,
+                                    y: 15.0)
                     }
-                    VStack {
-                        HStack {
-                            Text("Login:")
-                            Spacer()
-                            TextField("", text: $login)
-                                .frame(maxWidth: 150)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                        HStack {
-                            Text("Password:")
-                            Spacer()
-                            SecureField("", text: $password)
-                                .frame(maxWidth: 150)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                    }.frame(maxWidth: 250)
-                        .padding(.top, 50)
-                    Button(action: verifyLogData) {
-                        Text("Log in")
-                    }.padding(.top, 50)
-                        .padding(.bottom, 20)
-                        .disabled(login.isEmpty || password.isEmpty)
-                }
-            }
-            .onReceive(keyboardIsOnPublisher) {
-                isKeyboardOn in
-                withAnimation(Animation.easeInOut(duration: 0.5)) {
-                    self.shouldShowLogo = !isKeyboardOn
-                }
-            }
-        }.onTapGesture {
-            UIApplication.shared.endEditing()
-        }.alert(isPresented: $showIncorrentCredentialWarning, content: {
-            Alert(
-            title: Text("Error"),
-            message: Text("Incorrect Login/Password was entered"))})
+                    
+                    HStack() {
+                        Text("Login")
+                            .fontWeight(.medium)
+                            .shadow(color: .black,
+                                    radius: 2.0,
+                                    x: -18.0,
+                                    y: 11.0)
+                            .padding(.leading, 50.0)
+                        Spacer()
+                        TextField("", text: $login)
+                            .frame(maxWidth: 150)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .shadow(color: .black,
+                                    radius: 13.0,
+                                    x: -18.0,
+                                    y: 15.0)
+                            .padding(.trailing, 40.0)
+                    }
+                    HStack() {
+                        Text("Password")
+                            .fontWeight(.medium)
+                            .shadow(color: .black,
+                                    radius: 2.0,
+                                    x: -18.0,
+                                    y: 11.0)
+                            .padding(.leading, 50.0)
+                        Spacer()
+                        SecureField("", text: $password)
+                            .frame(maxWidth: 150)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .shadow(color: .black,
+                                    radius: 13.0,
+                                    x: -18.0,
+                                    y: 15.0)
+                            .padding(.trailing, 40.0)
+                            .padding(.leading, 10.0)
+                    }
+                    Button(action: verifyLoginData) {
+                        Text("Enter")
+                    }
+                    .padding(.top, 20)
+                    .disabled(login.isEmpty || password.isEmpty)
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue)
+                } .onReceive(keyboardIsOnPublisher, perform: { isKeyboardOn in
+                    withAnimation(Animation.easeInOut(duration: 0.5)) {
+                         self.shouldShowLogo = !isKeyboardOn
+                     }
+                 })
+                     .frame(maxWidth: 350)
+             }
+         }.onTapGesture {
+             UIApplication.shared.endEditing()
+        }.alert(isPresented: $showAlert, content: { Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
+        })
     }
-}
-extension UIApplication {
+    
+    private func verifyLoginData() {
+        if login == "A" || password == "1" {
+            isLogin = true
+        } else {
+            showAlert = true
+             password = ""
+         }
+     }
+
+ }
+
+ extension UIApplication {
     func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        sendAction(#selector (UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

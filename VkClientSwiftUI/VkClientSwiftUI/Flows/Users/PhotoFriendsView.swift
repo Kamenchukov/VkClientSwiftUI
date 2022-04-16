@@ -10,40 +10,43 @@ import SwiftUI
 
 struct PhotoFriendsView: View {
     
+    @State private var PhotosRowHeight: CGFloat? = nil
+    @State private var selection: Int? = nil
+    @State private var isSelected: Bool = false
     @ObservedObject var viewModel: PhotosViewModel
-    let id: Int
     
-    var body: some View {
-        ScrollView {
-            CollectionView(viewModelPhotos: viewModel, id: id)
-        }
-    }
-}
-
-struct CollectionView: View {
-    
+    let user: UserObject
     private let columns = [
-        GridItem(.adaptive(minimum: 100), spacing: 15)
+        GridItem(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem(.flexible(minimum: 0, maximum: .infinity))
     ]
-    let viewModelPhotos: PhotosViewModel
-    let id: Int
 
     var body: some View {
-        
-        ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(viewModelPhotos.photos.indices, id: \.self) { photoIndex in
-                                     NavigationLink {
-                                         ExtendedPhotoView(photosViewModel: viewModelPhotos, photoIndex: photoIndex)
-                                     } label: {
-                                         PhotoFriendsCell(viewModelPhotos: viewModelPhotos, photoIndex: photoIndex)
-                                     }
-                }
-            }
+        GeometryReader { geometry in
+                     ScrollView(.vertical) {
+                         LazyVGrid(columns: columns, alignment: .center, spacing: 15) {
+                             ForEach(viewModel.photos.indices, id: \.self) { index in
+                                 NavigationLink(isActive: $isSelected) {
+                                     ExtendedPhotoView(photosViewModel: viewModel, photoIndex: $selection)
+                                 } label: {
+                                     PhotoFriendsCell(isSelected: $isSelected, selection: $selection, index: index, URL: viewModel.photos[index].sizes["x"]!)
+                                         .frame(height: PhotosRowHeight)
+                                 }
+                            }
         } .onAppear {
-            viewModelPhotos.fetchPhotos(ownerID: id)
+            viewModel.fetchPhotos(ownerID: user.id)
+            
+            }
+            .onPreferenceChange(PhotosHeightPreferenceKey.self) { height in
+                                 PhotosRowHeight = height
+                
+            }
+            .overlayPreferenceValue(PhotosAnchorPreferenceKey.self) { SelectionRectangle(anchor: $0)
+            }
         }
     }
+  }
 }
 
 
