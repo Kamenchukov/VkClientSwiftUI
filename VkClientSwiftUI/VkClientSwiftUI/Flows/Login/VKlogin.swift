@@ -22,8 +22,8 @@ struct VKLoginWebView: UIViewRepresentable {
         return webView
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+    func makeCoordinator() -> LoginCoordinator {
+         LoginCoordinator(self)
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
@@ -49,7 +49,7 @@ struct VKLoginWebView: UIViewRepresentable {
     }
 }
 
-class Coordinator: NSObject, WKNavigationDelegate {
+class LoginCoordinator: NSObject, WKNavigationDelegate {
     
     let parent: VKLoginWebView
     

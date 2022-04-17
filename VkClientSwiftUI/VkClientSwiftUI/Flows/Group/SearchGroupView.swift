@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SearchGroupView: View {
     @ObservedObject var viewModel: SearchGroupViewModel
-         @State var searchText = ""
+    @State var searchText = ""
 
-         private var searchResult: [SearchedObjects] {
+      private var searchResult: [SearchedObjects] {
              if searchText.isEmpty {
                  return []
              } else {

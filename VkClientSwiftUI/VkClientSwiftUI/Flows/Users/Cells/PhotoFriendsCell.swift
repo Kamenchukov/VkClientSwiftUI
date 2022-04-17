@@ -10,14 +10,14 @@ import Kingfisher
 
 struct PhotosHeightPreferenceKey: PreferenceKey {
 
-    static var defaultValue: CGFloat = 0
+     static var defaultValue: CGFloat = 0
 
-         static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-             value = max(value, nextValue())
-         }
+     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+         value = max(value, nextValue())
      }
+ }
 
-     struct PhotoFriendsCell: View {
+struct PhotoFriendsCell: View {
      @Binding var isSelected: Bool
      @State var isPressed = false
      @Binding var selection: Int?
@@ -48,11 +48,11 @@ struct PhotosHeightPreferenceKey: PreferenceKey {
                                   self.isSelected = true
                               }
                           })
-                          .onTapGesture {
-                              withAnimation(.default) {
-                                  self.selection = index
-                              }
-                          }
-                  }
-              }
+                 .onTapGesture {
+                     withAnimation(.default) {
+                                              self.selection = index
+                                          }
+                 }
+         }
+     }
  }

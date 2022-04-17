@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct VkClientSwiftUIApp: App {
-    
+
     @State var isLogin: Bool = false
-    
+
     var body: some Scene {
         WindowGroup {
             if isLogin {
@@ -22,3 +22,4 @@ struct VkClientSwiftUIApp: App {
         }
     }
 }
+

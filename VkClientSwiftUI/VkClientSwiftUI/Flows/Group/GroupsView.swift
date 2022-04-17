@@ -9,10 +9,12 @@ import SwiftUI
 import Kingfisher
 
 struct GroupsView: View {
+    
     @ObservedObject var groupsViewModel: GroupViewModel
     @State var searchText = ""
-         @State var isTapped: Bool = false
-         private var searchResult: [RealmGroups] {
+    @State var isTapped: Bool = false
+    
+    private var searchResult: [RealmGroups] {
              if searchText.isEmpty {
                  return groupsViewModel.detachedGroups
              } else {
@@ -24,25 +26,26 @@ struct GroupsView: View {
     
     var body: some View {
         VStack {
-                   HStack {
-                       NavigationView {
-                           List(searchResult, id: \.self) { groups in
-                               GroupsCell(groups: groups)
-                           }.listStyle(PlainListStyle())
-                               .onAppear {
-                                   groupsViewModel.fetchGroups()
-                               }.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-                               .navigationBarTitleDisplayMode(.large)
-                               .toolbar {
-                                   NavigationLink {
-                                      SearchGroupView(viewModel: SearchGroupViewModel())
-                                   } label: {
-                                       Image(systemName: "plus.rectangle.on.rectangle")
-                                           .frame(width: 120, height: 50)
-                                   }
-                               }
-                       }
-                   }
+                    HStack {
+                        NavigationView {
+                            List(searchResult, id: \.self) { groups in
+                                GroupsCell(groups: groups)
+                            }.listStyle(PlainListStyle())
+                                .onAppear {
+                                    groupsViewModel.fetchGroups()
+                                }.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                                .navigationBarTitleDisplayMode(.large)
+                                .toolbar {
+                                    NavigationLink {
+                                       SearchGroupView(viewModel: SearchGroupViewModel())
+                                    } label: {
+                                        Image(systemName: "plus.rectangle.on.rectangle")
+                                            .frame(width: 120, height: 50)
+                                    }
+                                }
+                        }
+                    }
+                }
         }
+    
     }
-}

@@ -13,7 +13,7 @@ struct LoginFromWebView: View {
     
     var body: some View {
         VKLoginWebView {
-            isLogin = true
+            self.isLogin = true
         }
     }
 }
